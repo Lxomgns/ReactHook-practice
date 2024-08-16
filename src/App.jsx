@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, useId } from "react";
 import "./App.css";
 import Revenue from "./Revenue";
 import { ValueContext } from "./ValueContext";
@@ -14,9 +14,11 @@ function App() {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
+  const id = useId()
 
   return (
     <>
+    <p style={{marginBottom:60}}>사업자 등록 번호: {id}</p>
       {loading && <p>로딩완료!</p>}
       <p>현재 수익: {value}</p>
       <button

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer, useState } from "react";
+import { useContext, useDeferredValue, useEffect, useReducer, useState } from "react";
 import { ValueContext } from "./ValueContext";
 
 export default function Revenue() {
@@ -38,6 +38,7 @@ export default function Revenue() {
     }
   };
   const [account, dispatch] = useReducer(reducer, 0);
+  const deferred = useDeferredValue(account)
 
   return (
     <>

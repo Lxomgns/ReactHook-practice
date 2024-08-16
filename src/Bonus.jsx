@@ -1,15 +1,13 @@
-import { useContext, useState, useEffect, useInsertionEffect } from "react";
+import { useContext, useState, useEffect, useInsertionEffect, useDebugValue, useRef } from "react";
 import { ValueContext } from "./ValueContext";
 
 export default function Bonus() {
   const { value } = useContext(ValueContext);
   const [isBonus, setIsBonus] = useState(false);
+  let rnum = useRef
   const random = () => {
-    console.log("Random!");
-    let rnum = 0;
     rnum = Math.floor(Math.random() * 20);
     if (rnum === 9) {
-      console.log("success!!");
       setIsBonus(true);
       const timer = setTimeout(() => {
         setIsBonus(false);
@@ -17,6 +15,9 @@ export default function Bonus() {
       return () => clearTimeout(timer);
     }
   };
+
+  useDebugValue(isBonus ? "Success Bro!" : "ㅠㅠ")
+
   useEffect(() => {
     const clean = random();
     return clean;
